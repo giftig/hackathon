@@ -1,15 +1,15 @@
 import datetime
+import requests
+
+import analysis
 
 
 class Modeller(object):
     """
     Remodels JSON into a consistent format
     """
-    # TODO: Get data for this
-    EMOTION_WORDS = ['cool', 'sentiment']
-
-    def _find_emotions(self, text):
-        return [w for w in self.EMOTION_WORDS if w in text.lower()]
+    def __init__(self, analyser=analysis.Analyser()):
+        self.analyser = analyser
 
     @staticmethod
     def _format_time(dt):
@@ -27,8 +27,8 @@ class Modeller(object):
 
         return {
             'author_weighting': author_weighting,
+            'emotion_analysis': self.analyser.analyse(text),
             'keywords': hashtags,
-            'emotions': self._find_emotions(text),
             'raw_text': text,
             'source': 'twitter',
             'timestamp': self._format_time(created)
