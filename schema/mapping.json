@@ -4,12 +4,15 @@
         "number_of_replicas": 1
     },
      "mappings": {
-        "the_tweets": {
+        "twit": {
             "properties": {
-                "author_weighting": {"type": "text"},
-                "emotions": {"type": "nested"},
-                "keywords": {"type": "nested"},
-                "raw_test": {"type": "text"},
+                "author_weighting": {"type": "long"},
+                "emotion_analysis.neg": {"type": "float"},
+                "emotion_analysis.pos": {"type": "float"},
+                "emotion_analysis.neutral": {"type": "float"},
+                "emotion_analysis.decision": {"type": "keyword"},
+                "keywords": {"type": "keyword"},
+                "raw_text": {"type": "text"},
                 "timestamp": {"type": "date"}
              }
         }
