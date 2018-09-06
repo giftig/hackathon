@@ -1,0 +1,17 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 1
+    },
+     "mappings": {
+        "the_tweets": {
+            "properties": {
+                "author_weighting": {"type": "text"},
+                "emotions": {"type": "nested"},
+                "keywords": {"type": "nested"},
+                "raw_test": {"type": "text"},
+                "timestamp": {"type": "date"}
+             }
+        }
+     }
+}
