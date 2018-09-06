@@ -12,4 +12,4 @@ class ESClient(object):
     es = Elasticsearch('%s://%s:%s' % (ES_PROTO, ES_HOST, ES_PORT))
 
     def insert_entry(self, data):
-        print self.es.index(index=self.ES_INDEX, doc_type='twit', body=data)
+        self.es.index(index=self.ES_INDEX, doc_type='twit', body=data)

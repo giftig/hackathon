@@ -24,7 +24,7 @@ def main():
     for e in data:
         es.insert_entry(e)
 
-#    print json.dumps(data)
+    print json.dumps(data)
 
 if __name__ == '__main__':
     main()
