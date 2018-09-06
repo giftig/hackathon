@@ -1,5 +1,4 @@
 import datetime
-import requests
 
 import analysis
 
@@ -15,11 +14,26 @@ class Modeller(object):
     def _format_time(dt):
         return dt.isoformat()
 
+    @staticmethod
+    def _contains_terms(text, terms):
+        text = text.lower()
+        terms = [t.lower() for t in terms]
+
+        for t in terms:
+            if t in text:
+                return True
+
+        return False
+
     def model_tweet(self, tweet, search_terms=None):
+        text = tweet['text']
+
+        if search_terms and not self._contains_terms(text, search_terms):
+            return None
+
         hashtags = [
             h['text'] for h in tweet.get('entities', {}).get('hashtags', [])
         ]
-        text = tweet['text']
         ts = int(tweet['timestamp_ms'])
 
         created = datetime.datetime.utcfromtimestamp(ts // 1000)

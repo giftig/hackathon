@@ -22,6 +22,9 @@ def main():
 
     es = ESClient()
     for e in data:
+        if not e:
+            continue
+
         es.insert_entry(e)
 
     print json.dumps(data)
