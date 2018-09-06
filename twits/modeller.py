@@ -15,7 +15,7 @@ class Modeller(object):
     def _format_time(dt):
         return dt.isoformat()
 
-    def model_tweet(self, tweet):
+    def model_tweet(self, tweet, search_terms=None):
         hashtags = [
             h['text'] for h in tweet.get('entities', {}).get('hashtags', [])
         ]
@@ -29,6 +29,7 @@ class Modeller(object):
             'author_weighting': author_weighting,
             'keywords': hashtags,
             'raw_text': text,
+            'search_terms': search_terms or [],
             'source': 'twitter',
             'timestamp': self._format_time(created)
         }

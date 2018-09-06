@@ -13,6 +13,7 @@
                 "emotion_analysis.decision": {"type": "keyword"},
                 "keywords": {"type": "keyword"},
                 "raw_text": {"type": "text"},
+                "search_term": {"type": "keyword"},
                 "timestamp": {"type": "date"}
              }
         }

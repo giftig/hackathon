@@ -18,7 +18,7 @@ def main():
             data.append(json.load(fp))
 
     m = Modeller()
-    data = [m.model_tweet(e) for e in data]
+    data = [m.model_tweet(e, ['wendyiscool']) for e in data]
 
     es = ESClient()
     for e in data:
