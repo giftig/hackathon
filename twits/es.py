@@ -5,7 +5,7 @@ from elasticsearch import Elasticsearch
 
 class ESClient(object):
     ES_HOST = os.environ.get('ES_HOST', 'localhost')
-    ES_PORT = int(os.environ.get('ES_HOST', '9200'))
+    ES_PORT = int(os.environ.get('ES_PORT', '9200'))
     ES_INDEX = os.environ.get('ES_INDEX', 'twits')
 
     es = Elasticsearch()
