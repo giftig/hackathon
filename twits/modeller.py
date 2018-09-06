@@ -23,10 +23,13 @@ class Modeller(object):
         ts = int(tweet['timestamp_ms'])
 
         created = datetime.datetime.utcfromtimestamp(ts // 1000)
+        author_weighting = tweet.get('user', {}).get('followers_count', 0)
 
         return {
+            'author_weighting': author_weighting,
             'keywords': hashtags,
             'emotions': self._find_emotions(text),
             'raw_text': text,
+            'source': 'twitter',
             'timestamp': self._format_time(created)
         }
