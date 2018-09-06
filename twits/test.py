@@ -3,6 +3,7 @@
 import json
 import os
 
+from es import ESClient
 from modeller import Modeller
 
 def main():
@@ -18,6 +19,10 @@ def main():
 
     m = Modeller()
     data = [m.model_tweet(e) for e in data]
+
+    es = ESClient()
+    for e in data:
+        es.insert_entry(e)
 
     print json.dumps(data)
 
